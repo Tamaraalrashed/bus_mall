@@ -38,29 +38,49 @@ function handleSubmit(event) {
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
-  const selectElement =document.getElementById('items');
-  const selectItem=selectElement.value;
- console.log(slectedItem);
+  // const selectElement =document.getElementById('items');
+  let item = event.target.items.value;
+  // const selectItem=selectElement
+console.log(item);
 
   // TODO: get the quantity
-  const selectedQuantityEl =document.getElementById('quantity');
-  const selectedQuantity = selectedQuantityEl.value ;
+  // const selectedQuantityEl =document.getElementById('quantity');
+  let quantity= event.target.quantity.value;
 
   // TODO: using those, add one item to the Cart
-  cart.push(selectedItem, selectedQuantity);
+  // let products=Product.allProducts[item];
+
+  cart.addItem(item,quantity);
 }
 console.log(cart);
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
-let counter=0;
-counter+=
+function updateCounter() {
+const counter=document.getElementById('itemCount');
+
+let count=cart.items.length;
+if (count){
+counter.textContent=`${count}`;
+};
+};
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  let item = event.target.items.value;
+  let quantity= event.target.quantity.value;
+  cart.addItem(item,quantity);
+  
   // TODO: Add a new element to the cartContents div with that information
-}
+
+  const content=document.getElementById('cartContents');
+  const newSp=document.createElement('span');
+  content.appendChild(newSp);
+  const newParagraph=document.createElement('p');
+  newSp.appendChild(newParagraph);
+  newParagraph.textContent=`product: ${item} quantity: ${quantity}`;
+console.log( newParagraph);
+};
 
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
