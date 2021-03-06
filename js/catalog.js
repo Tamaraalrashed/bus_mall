@@ -51,6 +51,7 @@ console.log(item);
   // let products=Product.allProducts[item];
 
   cart.addItem(item,quantity);
+ 
 }
 console.log(cart);
 
@@ -58,7 +59,7 @@ console.log(cart);
 function updateCounter() {
 const counter=document.getElementById('itemCount');
 
-let count=cart.items.length;
+ let count=cart.items.length;
 if (count){
 counter.textContent=`${count}`;
 };
@@ -69,7 +70,7 @@ function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   let item = event.target.items.value;
   let quantity= event.target.quantity.value;
-  cart.addItem(item,quantity);
+
   
   // TODO: Add a new element to the cartContents div with that information
 
